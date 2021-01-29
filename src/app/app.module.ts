@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,10 @@ import { FooterComponent} from "./navigation/footer/footer.component"
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminComponent } from './pages/admin/admin.component';
 import { SubHeaderComponent } from './navigation/sub-header/sub-header.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AuthenticationModule } from './authentication/authentication.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+
 
 @NgModule({
   declarations: [
@@ -18,10 +23,15 @@ import { SubHeaderComponent } from './navigation/sub-header/sub-header.component
     NavbarComponent,
     AdminComponent,
     FooterComponent,
-    SubHeaderComponent
+    SubHeaderComponent,
+    LoginComponent
 
-      ],
+    ],
   imports: [
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AuthenticationModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule
