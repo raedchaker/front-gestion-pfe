@@ -1,0 +1,129 @@
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-8 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Nouvelle Soutenance</h3>
+            </div>
+            <div class="col-4 text-right">
+              <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form #formulaire="ngForm">
+            <h6 class="heading-small text-muted mb-4">Informations sur le sujet </h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-subject">Intitulé du sujet</label>
+                    <input required type="text" id="input-subject" ngModel name="subject" class="form-control form-control-alternative" placeholder="nom du sujet" >
+                  </div>
+                </div>
+              </div>
+
+            <hr class="my-4" />
+            <h6 class="heading-small text-muted mb-4">Informations sur l'étudiant </h6>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">Nom </label>
+                    <input type="text" id="input-last-name" ngModel name="last-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">Prénom</label>
+                    <input type="text" id="input-first-name" ngModel name="first-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="inscription">Num. d'inscription</label>
+                    <input type="text" id="inscription" ngModel name="inscription" class="form-control form-control-alternative" placeholder="num inscription" >
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="student-email">email</label>
+                    <input email type="email" id="student-email" name="student-email" ngModel class="form-control form-control-alternative" placeholder="email de l'etudiant">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <hr class="my-4" />
+            <!-- Address -->
+            <h6 class="heading-small text-muted mb-4">Date et salle de la soutenance</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-salle">Salle de conférence</label>
+                    <input id="input-salle"  ngModel name="salle" class="form-control form-control-alternative" placeholder="salle de conférence"  type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-date">Date de la soutenance</label>
+                    <input type="date" id="input-date" ngModel name="date" class="form-control form-control-alternative" placeholder="JJ//MM/yyyy" >
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-hour">Heur de la soutenance</label>
+                    <input type="time" id="input-hour" ngModel name="hour"  class="form-control form-control-alternative" placeholder="Country" value="United States">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- Jury -->
+            <h6 class="heading-small text-muted mb-4">Membres de jury</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-pres-jury">Président de Jury</label>
+                    <input type="text" id="input-pres-jury" name="pres-jury" ngModel class="form-control form-control-alternative" placeholder="enseignant président de jury" >
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-mone-jury">Membre 1</label>
+                    <input type="text" id="input-mone-jury" name="mone-jury" ngModel class="form-control form-control-alternative" placeholder="membre n°1 de jury" >
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-mtwo-jury">Membre 2</label>
+                    <input type="text" id="input-mtwo-jury" name="mtwo-jury" ngModel class="form-control form-control-alternative" placeholder="membre n°2 de jury" >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4"></div>
+              <div class="col-lg-4">
+                <button class="btn btn-success" (click)="AjouterSoutenance(formulaire)" [disabled]="formulaire.invalid">Ajouter</button>
+              </div>
+              <div class="col-lg-4"></div>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
