@@ -10,6 +10,10 @@ import { FooterComponent} from "./navigation/footer/footer.component"
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminComponent } from './pages/admin/admin.component';
 import { SubHeaderComponent } from './navigation/sub-header/sub-header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from "@angular/common/http";
+import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -23,8 +27,14 @@ import { SubHeaderComponent } from './navigation/sub-header/sub-header.component
       ],
   imports: [
     BrowserModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
+    CommonModule,
+    ToastrModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]
