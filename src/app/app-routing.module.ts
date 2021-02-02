@@ -2,6 +2,8 @@ import { ListSoutenanceComponent } from './Soutenance/list-soutenance/list-soute
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './pages/admin/admin.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AuthGardGuard } from './authentication/auth-gard.guard';
 import { AddSoutenanceComponent } from './Soutenance/add-soutenance/add-soutenance.component';
 
 const routes: Routes = [
@@ -17,6 +19,11 @@ const routes: Routes = [
   {
     path: 'admin/ListSoutenance',
     component: ListSoutenanceComponent,
+    canActivate: [AuthGardGuard],
+  },
+  {
+    path : 'login',
+    component : LoginComponent,
   }
 ];
 
