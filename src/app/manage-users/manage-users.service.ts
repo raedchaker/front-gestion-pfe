@@ -24,5 +24,9 @@ export class ManageUsersService {
     return this.http.delete(API+id)
   }
 
+  addUser(user):Observable<any>{
+    return this.http.post('http://localhost:3000/auth/register',user)
+  }
+
 
 }

@@ -14,7 +14,8 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthenticationModule } from './authentication/authentication.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms'
+
 
 
 @NgModule({
@@ -31,7 +32,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
   imports: [
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
     AuthenticationModule,
     BrowserModule,
     BrowserModule,
@@ -40,7 +40,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
     NgbModule,
     HttpClientModule,
     CommonModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FormsModule
 
   ],
   providers: [],

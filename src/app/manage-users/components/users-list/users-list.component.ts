@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ManageUsersService } from 'src/app/manage-users/manage-users.service';
 import { idText } from 'typescript';
-import { User } from '../models/user.model';
+import { User } from '../../models/user.model';
 
 
 @Component({
@@ -14,7 +14,9 @@ import { User } from '../models/user.model';
 export class UsersListComponent implements OnInit {
   public users:User[]= []
 
-  constructor(private userService:ManageUsersService,private toasterService:ToastrService) {
+  constructor(private userService:ManageUsersService,
+    private toasterService:ToastrService,
+    private router:Router) {
 
   }
 
@@ -41,6 +43,11 @@ export class UsersListComponent implements OnInit {
       }
     )
     console.log(id)
+  }
+
+  addUser(){
+    this.router.navigate(['admin','add-user'])
+
   }
 
 }
