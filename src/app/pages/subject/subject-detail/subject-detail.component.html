@@ -1,0 +1,48 @@
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+      <div class="card card-profile shadow">
+        <div class="card-body pt-0 pt-md-4">
+          <div class="text-left">
+            <h3>
+              Etudiant: {{mySubject.student.firstname +' '+ mySubject.student.lastname}}
+            </h3>
+            <h3>
+              Encadrant: {{mySubject.teacher.firstname +' '+ mySubject.teacher.lastname}}
+            </h3>
+            <h3>
+              Entreprise: {{mySubject.entreprise}}
+            </h3>
+            <h3>
+              Annee: {{mySubject.annee}}
+            </h3>
+            <hr class="my-4" />
+            <h3>
+              Descirption:
+            </h3>
+            <p>
+              {{mySubject.description}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-8 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div >
+              <div >
+                <h3 class="mb-0">{{mySubject.title}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>Rapport du sujet:</p>
+          <pdf-viewer [src]="pdfSrc" [render-text]="true" [original-size]="false"></pdf-viewer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,32 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EtudiantModule } from '../etudiant/etudiant.module';
-import { MainComponent } from './main/main.component';
-
-export function loadEtudiantModule() {
-  return EtudiantModule;
-}
-
 
 const MainRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'etudiant', 
+    redirectTo: 'subject', 
     pathMatch: 'full'
   },
   {
-    path: 'etudiant',
+    path: 'subject',
     children:[{
       path:'',
-      loadChildren: ()=> import(`../etudiant/etudiant.module`).then(m=>m.EtudiantModule)
+      loadChildren: ()=> import(`./subject/subject.module`).then(m=>m.SubjectModule)
     }],
-  },
-  {
-    path: 'enseignant',
-    children:[{
-      path:'',
-      loadChildren: ()=> import(`../enseignant/enseignant.module`).then(m=>m.EnseignantModule)
-    }]
   }
 ];
 
