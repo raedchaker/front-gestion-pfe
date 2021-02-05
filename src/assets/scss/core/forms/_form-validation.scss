@@ -5,7 +5,7 @@
 // Validation
 
 .has-success,
-.has-danger {
+.has-danger,.ng-touched.ng.invalid {
     position: relative;
 
     &:after, {
@@ -48,7 +48,7 @@
     }
 }
 
-.has-danger {
+.has-danger,.ng-touched.ng.invalid {
     &:after {
         content: "\ea53";
         color: daken($form-feedback-invalid-color, 18%);
