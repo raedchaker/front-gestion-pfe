@@ -29,7 +29,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
     AuthenticationModule,
     BrowserModule,
     BrowserModule,

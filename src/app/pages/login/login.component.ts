@@ -31,7 +31,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       response => {
         // console.log(response)
         localStorage.setItem('token', response['access_token']);
-        this.router.navigate(["/"]);
+        if (this.authService.getRole()==='admin')
+        this.router.navigate(['admin'])
+        else this.router.navigate(["/"]);
       },
 
       error => {
