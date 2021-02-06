@@ -1,0 +1,28 @@
+<div class="table-responsive">
+    <table class="table align-items-center table-flush">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Titre</th>
+          <th scope="col">Etudiant</th>
+          <th scope="col">Entreprise</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sujet of listSubjects | paginate: { itemsPerPage: 10, currentPage: p }" routerLink='/app/subject/subject-details/{{sujet.id}}'>
+          <td scope="row">
+            {{sujet.title}}
+          </td>
+          <td>
+            {{sujet.student.firstname +' '+ sujet.student.lastname}}
+          </td>
+          <td>
+            {{sujet.entreprise}}
+          </td>
+        </tr>
+        <tr>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls previousLabel="précédente"
+    nextLabel="suivante" (pageChange)="p = $event" style="text-align: center;"></pagination-controls>
+  </div>

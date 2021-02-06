@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {SidebarComponent} from './navigation/sidebar/sidebar.component';
-import { NavbarComponent } from "./navigation/navbar/navbar.component";
-import { FooterComponent} from "./navigation/footer/footer.component"
+import { SidebarComponent } from './navigation/sidebar/sidebar.component';
+import { NavbarComponent } from './navigation/navbar/navbar.component';
+import { FooterComponent } from './navigation/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminComponent } from './pages/admin/admin.component';
 import { SubHeaderComponent } from './navigation/sub-header/sub-header.component';
@@ -14,8 +14,7 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthenticationModule } from './authentication/authentication.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,9 +24,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
     AdminComponent,
     FooterComponent,
     SubHeaderComponent,
-    LoginComponent
-
-    ],
+    LoginComponent,
+  ],
   imports: [
     HttpClientModule,
     FormsModule,
@@ -40,10 +38,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
     NgbModule,
     HttpClientModule,
     CommonModule,
-    ToastrModule.forRoot()
-
+    ToastrModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
