@@ -3,7 +3,7 @@
     <!-- Table -->
     <div class="row">
       <div class="col">
-        <div class="card shadow">
+        <div class="card shadow" *ngIf="listSubjects.length > 0 else aucun_ancien_sujet">
           <div class="card-header border-0">
             <h1 style="text-align: center;">Ancien encadrements</h1>
           </div>
@@ -12,6 +12,10 @@
             <h1>2020</h1>
           </div> -->
           <app-table-pfe [listSubjects]='listSubjects'></app-table-pfe>
+        </div>
+        <div class="card shadow" style="text-align: center;" #aucun_ancien_sujet>
+          <h1>vous n'avez pas d'ancien sujet de pfe pour afficher</h1>
+          <p> vous pouvez voir la liste des anciens sujet pfe par ici <a routerLink="/app/subject/etudiant/list-pfe" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">sujet pfe</a> </p>
         </div>
       </div>
     </div>

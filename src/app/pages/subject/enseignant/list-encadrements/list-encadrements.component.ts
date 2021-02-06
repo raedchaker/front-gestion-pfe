@@ -9,12 +9,13 @@ import { SujetPfeService } from 'src/app/_service/sujet-pfe.service';
 })
 export class ListEncadrementsComponent implements OnInit {
 
+  teacherId: string = '';
   listEncadrements: Sujet[]=[];
   constructor(private subjectService: SujetPfeService) { }
 
   ngOnInit(): void {
-
-    this.subjectService.getAllPfeSubjects().subscribe(res=>{
+    this.teacherId = localStorage.getItem('id');
+    this.subjectService.getSubjectsByTeacherId(this.teacherId).subscribe(res=>{
       this.listEncadrements = res.slice();
     })
   }

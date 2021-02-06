@@ -15,6 +15,7 @@ export class ListePfeEnseignantComponent implements OnInit {
   //listSubjectsByYear: [Sujet[]];
   showYear: boolean[]=[];
   anneeList: Annee[]=[];
+  teacherId: string = '';
   year = new FormControl();
   p:number = 0; // page to point on
   yearList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
@@ -22,8 +23,8 @@ export class ListePfeEnseignantComponent implements OnInit {
   constructor(private subjectService: SujetPfeService) { }
 
   ngOnInit(): void {
-
-    this.subjectService.getAllPfeSubjects().subscribe(res=>{
+    this.teacherId = localStorage.getItem('id');
+    this.subjectService.getSubjectsByTeacherId(this.teacherId).subscribe(res=>{
       this.listSubjects = res.slice();
     })
   }
