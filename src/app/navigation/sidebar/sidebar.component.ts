@@ -9,7 +9,65 @@ declare interface RouteInfo {
   icon: string;
   class: string;
 }
-export const ROUTES: RouteInfo[] = [
+export const AdminROUTES: RouteInfo[] = [
+  {
+    path: '/admin/users',
+    title: 'Users',
+    icon: 'ni-single-02 text-yellow',
+    class: '',
+  },
+  {
+    path: '/subject/list-pfe',
+    title: 'Liste des sujets PFE',
+    icon: 'ni-bullet-list-67 text-red',
+    class: '',
+  },
+  {
+    path: '/register',
+    title: 'add user',
+    icon: 'ni-circle-08 text-pink',
+    class: '',
+  },
+];
+
+export const StudentROUTES: RouteInfo[] = [
+  {
+    path: '/admin/users',
+    title: 'Users',
+    icon: 'ni-single-02 text-yellow',
+    class: '',
+  },
+  {
+    path: '/dashboard',
+    title: 'Dashboard',
+    icon: 'ni-tv-2 text-primary',
+    class: '',
+  },
+  { path: '/icons', title: 'Icons', icon: 'ni-planet text-blue', class: '' },
+  { path: '/maps', title: 'Maps', icon: 'ni-pin-3 text-orange', class: '' },
+  {
+    path: '/subject/list-pfe',
+    title: 'Liste des sujets PFE',
+    icon: 'ni-bullet-list-67 text-red',
+    class: '',
+  },
+  {
+    path: '/subject/mes-encadrements',
+    title: 'Mes Encadrements',
+    icon: 'ni-paper-diploma text-red',
+    class: '',
+  },
+
+  { path: '/login', title: 'Login', icon: 'ni-key-25 text-info', class: '' },
+  {
+    path: '/register',
+    title: 'Register',
+    icon: 'ni-circle-08 text-pink',
+    class: '',
+  },
+];
+
+export const teacherROUTES: RouteInfo[] = [
   {
     path: '/admin/users',
     title: 'Users',
@@ -62,8 +120,19 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     this.logged = this.auth.getAuthenticatedUser();
     this.user = this.getAuthenticatedUser();
-    console.log(this.user);
-    this.menuItems = ROUTES.filter((menuItem) => menuItem);
+    const role = this.auth.getRole();
+    if(role === 'admin' ){
+      this.menuItems = AdminROUTES.filter((menuItem) => menuItem);
+    }
+    else 
+    {
+      if( role === 'student' ){
+        this.menuItems = StudentROUTES.filter((menuItem) => menuItem);
+      }
+      else{
+        this.menuItems = teacherROUTES.filter((menuItem) => menuItem);
+      }
+    }
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
     });

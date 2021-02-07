@@ -1,3 +1,4 @@
+import { LoginGuardGuard } from './authentication/guards/login-guard.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './pages/admin/admin.component';
@@ -17,16 +18,23 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate:[LoginGuardGuard]
   },
   {
     path: 'subject',
     component: AdminComponent,
+    canActivate:[AuthGardGuard],
     loadChildren: () =>
       import('./subject/subject.module').then((m) => m.SubjectModule),
   },
   {
     path: 'error',
     component: Error6Component,
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'subject'
   },
 ];
 

@@ -22,7 +22,7 @@ export class AuthGardGuard implements CanActivate {
       if ( 
         !this.auth.isAuthenticated()
         ) {
-        this.router.navigate(['login']);
+        this.router.navigate(['/login']);
         this.toastr.error("Please login first !")
         return false;
       }

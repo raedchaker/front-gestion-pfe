@@ -17,7 +17,7 @@ export class StudentGuardGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if(this.auth.getRole()!=='student'){
-        this.router.navigate(['login']);
+        this.router.navigate(['/subject/list-pfe']);
         this.toastr.error("You need to be student ")
         return false;
       }
