@@ -16,10 +16,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AddSoutenanceComponent } from './Soutenance/add-soutenance/add-soutenance.component';
 import { ListSoutenanceComponent } from './Soutenance/list-soutenance/list-soutenance.component';
-import {DetailSoutenanceComponent} from './Soutenance/detail-soutenance/detail-soutenance.component';
+import { DetailSoutenanceComponent } from './Soutenance/detail-soutenance/detail-soutenance.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthHttpInterceptor } from './authentication/interceptors/auth.interceptor';
+import { ErrorComponent } from './pages/error/error.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +30,13 @@ import { AuthHttpInterceptor } from './authentication/interceptors/auth.intercep
     AdminComponent,
     FooterComponent,
     SubHeaderComponent,
+    ErrorComponent,
     LoginComponent,
     AddSoutenanceComponent,
     ListSoutenanceComponent,
-    DetailSoutenanceComponent
-
-    ],
+    DetailSoutenanceComponent,
+    ErrorComponent,
+  ],
   imports: [
     HttpClientModule,
     FormsModule,
@@ -47,10 +49,9 @@ import { AuthHttpInterceptor } from './authentication/interceptors/auth.intercep
     NgbModule,
     HttpClientModule,
     CommonModule,
-    ToastrModule.forRoot()
-
+    ToastrModule.forRoot(),
   ],
   providers: [AuthHttpInterceptor],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

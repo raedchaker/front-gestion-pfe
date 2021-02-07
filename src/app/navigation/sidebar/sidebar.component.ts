@@ -33,7 +33,7 @@ export const AdminROUTES: RouteInfo[] = [
 export const StudentROUTES: RouteInfo[] = [
   {
     path: '/admin/users',
-    title: 'Users',
+    title: 'Utilisateurs',
     icon: 'ni-single-02 text-yellow',
     class: '',
   },

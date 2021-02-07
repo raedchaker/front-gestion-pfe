@@ -4,9 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './pages/admin/admin.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGardGuard } from './authentication/guards/auth-gard.guard';
-import { Error6Component } from './pages/error/error6.component';
-import { AdminGuardGuard } from './authentication/guards/admin-guard.guard';
+import { ErrorComponent } from './pages/error/error.component';
 
+import { AdminGuardGuard } from './authentication/guards/admin-guard.guard';
 
 const routes: Routes = [
   {
@@ -14,17 +14,17 @@ const routes: Routes = [
     component: AdminComponent,
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
-    canActivate: [AuthGardGuard,AdminGuardGuard],
+    canActivate: [AuthGardGuard, AdminGuardGuard],
   },
   {
     path: 'login',
     component: LoginComponent,
-    canActivate:[LoginGuardGuard]
+    canActivate: [LoginGuardGuard],
   },
   {
     path: 'subject',
     component: AdminComponent,
-    canActivate:[AuthGardGuard],
+    canActivate: [AuthGardGuard],
     loadChildren: () =>
       import('./subject/subject.module').then((m) => m.SubjectModule),
   },
@@ -32,16 +32,19 @@ const routes: Routes = [
     path: 'soutenance',
     component: AdminComponent,
     loadChildren: () =>
-      import('./Soutenance/manage-soutenance.module').then((m) => m.ManageSoutenanceModule),
+      import('./Soutenance/manage-soutenance.module').then(
+        (m) => m.ManageSoutenanceModule
+      ),
   },
-  {
-    path: 'error',
-    component: Error6Component,
-  },
+
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'subject'
+    redirectTo: 'subject',
+  },
+  {
+    path: '**',
+    component: ErrorComponent,
   },
 ];
 
