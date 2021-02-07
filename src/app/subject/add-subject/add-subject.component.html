@@ -1,6 +1,6 @@
 <div class="container-fluid mt--7">
   <div class="row justify-content-center">
-    <div class="col-xl-7 col-md-8">
+    <div class="col-xl-10 col-md-9">
       <div class="card bg-secondary shadow">
         <div class="card-header bg-white border-0">
           <div class="row align-items-center">
@@ -23,7 +23,7 @@
           <form role="form" #add_subject="ngForm">
             <div class="pl-lg-4">
               <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                   <div class="form-group">
                     <label class="form-control-label" for="input-titre"
                       >Titre*</label
@@ -49,7 +49,7 @@
                     </span>
                   </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                   <div class="form-group">
                     <label class="form-control-label" for="input-entreprise"
                       >Entreprise*</label
@@ -75,7 +75,7 @@
                     </span>
                   </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                   <div class="form-group">
                     <label class="form-control-label" for="input-entreprise"
                       >Email de l'encadrant*</label
@@ -91,6 +91,32 @@
                     />
                     <span
                       *ngIf="teacherInput.invalid && teacherInput.touched"
+                      style="
+                        font-size: 13px;
+                        color: #85210e;
+                        text-align: center;
+                      "
+                    >
+                      Champ obligatoire
+                    </span>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-annee"
+                      >Année</label
+                    >
+                    <input
+                      required
+                      ngModel
+                      type="text"
+                      name="year"
+                      class="form-control form-control-alternative"
+                      placeholder="Année"
+                      #anneeInput="ngModel"
+                    />
+                    <span
+                      *ngIf="anneeInput.invalid && anneeInput.touched"
                       style="
                         font-size: 13px;
                         color: #85210e;

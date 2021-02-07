@@ -4,102 +4,88 @@ import { AuthenticationModule } from 'src/app/authentication/authentication.modu
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 
 declare interface RouteInfo {
-    path: string;
-    title: string;
-    icon: string;
-    class: string;
+  path: string;
+  title: string;
+  icon: string;
+  class: string;
 }
 export const AdminROUTES: RouteInfo[] = [
   {
     path: '/admin/users',
-    title: 'Users',
-    icon: 'ni-single-02 text-yellow',
+    title: 'Liste des Utilisateurs',
+    icon: 'ni-single-02 text-red-insat',
+    class: '',
+  },
+  {
+    path: '/admin/add-user',
+    title: 'Ajouter Utilisateur',
+    icon: 'ni-single-02 text-red-insat',
     class: '',
   },
   {
     path: '/subject/list-pfe',
     title: 'Liste des sujets PFE',
-    icon: 'ni-bullet-list-67 text-red',
+    icon: 'ni-bullet-list-67 text-red-insat',
     class: '',
   },
   {
-    path: '/register',
-    title: 'add user',
-    icon: 'ni-circle-08 text-pink',
+    path: '/soutenance/ListSoutenance',
+    title: 'Liste des Soutenances',
+    icon: 'ni-bullet-list-67 text-red-insat',
+    class: '',
+  },
+  {
+    path: '/soutenance/AddSoutenance',
+    title: 'Ajouter Soutenance',
+    icon: 'ni-watch-time text-red-insat',
     class: '',
   },
 ];
 
 export const StudentROUTES: RouteInfo[] = [
   {
-    path: '/admin/users',
-    title: 'Utilisateurs',
-    icon: 'ni-single-02 text-yellow',
-    class: '',
-  },
-  {
-    path: '/dashboard',
-    title: 'Dashboard',
-    icon: 'ni-tv-2 text-primary',
-    class: '',
-  },
-  { path: '/icons', title: 'Icons', icon: 'ni-planet text-blue', class: '' },
-  { path: '/maps', title: 'Maps', icon: 'ni-pin-3 text-orange', class: '' },
-  {
     path: '/subject/list-pfe',
     title: 'Liste des sujets PFE',
-    icon: 'ni-bullet-list-67 text-red',
+    icon: 'ni-bullet-list-67 text-red-insat',
     class: '',
   },
   {
-    path: '/subject/mes-encadrements',
-    title: 'Mes Encadrements',
-    icon: 'ni-paper-diploma text-red',
+    path: '/subject/add-subject',
+    title: 'Ajouter Sujet',
+    icon: 'ni-single-copy-04 text-red-insat',
     class: '',
   },
-
-  { path: '/login', title: 'Login', icon: 'ni-key-25 text-info', class: '' },
   {
-    path: '/register',
-    title: 'Register',
-    icon: 'ni-circle-08 text-pink',
+    path: '/soutenance/ListSoutenance',
+    title: 'Liste des Soutenances',
+    icon: 'ni-bullet-list-67 text-red-insat',
     class: '',
   },
 ];
 
 export const teacherROUTES: RouteInfo[] = [
   {
-    path: '/admin/users',
-    title: 'Users',
-    icon: 'ni-single-02 text-yellow',
+    path: '/soutenance/ListSoutenance',
+    title: 'Liste des Soutenances',
+    icon: 'ni-bullet-list-67 text-red-insat',
     class: '',
   },
-  {
-    path: '/dashboard',
-    title: 'Dashboard',
-    icon: 'ni-tv-2 text-primary',
-    class: '',
-  },
-  { path: '/soutenance/AddSoutenance', title: 'Nouvelle Soutenance', icon: 'ni-planet text-blue', class: '' },
-  { path: '/soutenance/ListSoutenance', title: 'Liste des Soutenances', icon: 'ni-pin-3 text-orange', class: '' },
   {
     path: '/subject/list-pfe',
     title: 'Liste des sujets PFE',
-    icon: 'ni-bullet-list-67 text-red',
+    icon: 'ni-bullet-list-67 text-red-insat',
     class: '',
   },
   {
     path: '/subject/mes-encadrements',
     title: 'Mes Encadrements',
-    icon: 'ni-paper-diploma text-red',
+    icon: 'ni-paper-diploma text-red-insat',
     class: '',
   },
-
-  { path: '/login', title: 'Login', icon: 'ni-key-25 text-info', class: '' },
   {
-    path: '/register',
-    title: 'Register',
-    icon: 'ni-circle-08 text-pink',
+    path: '/subject/teacher/old-pfe',
+    title: 'Mes Ancien Encadrements',
+    icon: 'ni-paper-diploma text-red-insat',
     class: '',
   },
 ];
@@ -110,7 +96,6 @@ export const teacherROUTES: RouteInfo[] = [
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-
   public menuItems: any[];
   public isCollapsed = true;
   user: any;
@@ -122,15 +107,12 @@ export class SidebarComponent implements OnInit {
     this.logged = this.auth.getAuthenticatedUser();
     this.user = this.getAuthenticatedUser();
     const role = this.auth.getRole();
-    if(role === 'admin' ){
+    if (role === 'admin') {
       this.menuItems = AdminROUTES.filter((menuItem) => menuItem);
-    }
-    else 
-    {
-      if( role === 'student' ){
+    } else {
+      if (role === 'student') {
         this.menuItems = StudentROUTES.filter((menuItem) => menuItem);
-      }
-      else{
+      } else {
         this.menuItems = teacherROUTES.filter((menuItem) => menuItem);
       }
     }
@@ -141,9 +123,8 @@ export class SidebarComponent implements OnInit {
   getAuthenticatedUser() {
     return `${this.logged.firstname} ${this.logged.lastname}`;
   }
-  logout(){
-    
-    this.auth.logout()
-    this.router.navigate(['login'])
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['login']);
   }
 }

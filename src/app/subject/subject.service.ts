@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Sujet } from './models/sujet';
 
-const SUBJECT_URL = environment.url+'subject/';
+const SUBJECT_URL = environment.url + 'subject';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class SubjectService {
   constructor(private http: HttpClient) {}
 
   addSubject(subject): Observable<any> {
-    return this.http.post<any>(SUBJECT_URL, subject);
+    return this.http.post<any>(SUBJECT_URL + '/', subject);
   }
 
   validateSubject(id: string): Observable<any> {
@@ -25,15 +25,17 @@ export class SubjectService {
   }
 
   getThisYearPfeSubjects(): Observable<Sujet[]> {
-    return this.http.get<Sujet[]>(SUBJECT_URL+'currentYear');
+    return this.http.get<Sujet[]>(SUBJECT_URL + '/currentYear');
   }
 
   getSubjectsByTeacherId(teacherId: string): Observable<Sujet[]> {
-    return this.http.get<Sujet[]>(SUBJECT_URL + 'teacher/' + teacherId);
+    return this.http.get<Sujet[]>(SUBJECT_URL + '/teacher/' + teacherId);
   }
 
   getThisYearSubjectsByTeacherId(teacherId: string): Observable<Sujet[]> {
-    return this.http.get<Sujet[]>(SUBJECT_URL + 'currentYear/teacher/' + teacherId);
+    return this.http.get<Sujet[]>(
+      SUBJECT_URL + '/currentYear/teacher/' + teacherId
+    );
   }
   getSubjectsByStudentId(studentId): Observable<Sujet> {
     return this.http.get<Sujet>(SUBJECT_URL + '/findByInsNumber/' + studentId);
