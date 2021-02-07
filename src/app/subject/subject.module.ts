@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { StudentGuardGuard } from '../authentication/guards/student-guard.guard';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatSelectModule,
     NgxPaginationModule,
     RouterModule.forChild([
-      { path: 'add-subject', component: AddSubjectComponent },
+      {
+        path: 'add-subject',
+        component: AddSubjectComponent,
+        canActivate: [StudentGuardGuard],
+      },
       { path: 'list-pfe', component: ListPfeComponent },
       { path: 'mes-encadrements', component: ListEncadrementsComponent },
       { path: 'subject-details/:id', component: SubjectDetailComponent },

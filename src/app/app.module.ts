@@ -15,6 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthHttpInterceptor } from './authentication/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [AuthHttpInterceptor],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

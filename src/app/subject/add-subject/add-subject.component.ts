@@ -16,8 +16,8 @@ export class AddSubjectComponent implements OnInit {
   processForm(add_subject: NgForm) {
     this.subjectService.addSubject(add_subject.value).subscribe(
       (response) => {
-        //should be redirected to the list page
         this.message = 'Sujet ajouté avec succès!';
+        this.router.navigate(['subject/subject-details/', response.id]);
       },
       (erreur) => {
         this.message = 'Vérifier les informations!!';
