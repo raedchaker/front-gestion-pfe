@@ -28,7 +28,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminComponent,
     FooterComponent,
     SubHeaderComponent,
-    LoginComponent
+    LoginComponent,
+    AddSoutenanceComponent,
+    ListSoutenanceComponent,
+    DetailSoutenanceComponent
 
     ],
   imports: [

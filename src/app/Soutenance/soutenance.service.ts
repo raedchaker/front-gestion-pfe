@@ -3,11 +3,13 @@ import { Injectable } from '@angular/core';
 import { SoutenanceModel } from './Model/soutenance.model';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {User} from '../manage-users/models/user.model';
+import {User} from '../admin/models/user.model';
+import {AdminService} from '../admin/admin.service';
+
 
 
 const apiSoutenance = 'http://localhost:3000/soutenance/';
-const apiUser = 'http://localhost:3000/user/';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +19,8 @@ export class SoutenanceService {
   soutenances: SoutenanceModel[] = [];
   // soutenancesFromApi: SoutenanceModel[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              ) { }
 
   getSoutenances(): Observable<SoutenanceModel[]>
   {
@@ -51,24 +54,10 @@ export class SoutenanceService {
     return this.http.post<SoutenanceModel>(apiSoutenance, soutenance);
   }
 
-  updateSoutenance(soutenance: SoutenanceModel): Observable<SoutenanceModel>{
+  updateSoutenance(soutenance: SoutenanceModel): Observable<SoutenanceModel> {
     console.log(soutenance);
     const link = apiSoutenance + soutenance.id.toString();
     return this.http.patch<SoutenanceModel>(link, soutenance);
   }
-
- /* serchUserByInsNumber(insNumber: number): Observable<User[]>{
-    const filter = `{"where":{"insNumber":{"like":"%${insNumber}%"}}}`;
-    const params = new HttpParams().set('filter', filter);
-  /!*  (this.http.get<User[]>(apiUser)).subscribe(
-      (users) => {
-        for(var i = 0 ; i < users.length; i++ ){
-          if (users[i].insNumber.)
-        }
-      }
-    );*!/
-    return this.http.get<User[]>(apiUser) ;
-
-  }*/
 
 }

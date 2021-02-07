@@ -56,8 +56,8 @@
               </td>
 
               <td >
-               <button class="btn fas fa-edit" (click)="modifierSoutenance(itemSoutenance.id)"></button>
-                <button class="btn fas fa-trash" (click)="supprimerSoutenance(itemSoutenance)"></button>
+               <button class=" btn fas fa-edit  text-yellow" (click)="modifierSoutenance(itemSoutenance.id)" [disabled]=hide></button>
+                <button class="btn fas fa-trash-alt  text-danger" (click)="supprimerSoutenance(itemSoutenance)" [disabled]=hide></button>
                </td>
             </tr>
 

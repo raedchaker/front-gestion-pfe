@@ -14,10 +14,13 @@ export class ListSoutenanceComponent implements OnInit {
 
   soutenances: SoutenanceModel[] = [];
   role = '';
+  hide = false;
+
   constructor(
     private soutenanceService: SoutenanceService,
     private router: Router,
-    private toasterService: ToastrService
+    private toasterService: ToastrService,
+    private authenticationService: AuthenticationService,
   ) {
   }
 
@@ -26,15 +29,24 @@ export class ListSoutenanceComponent implements OnInit {
       (response) => {
         console.log(response);
         this.soutenances = response;
+        this.showHideButton();
       },
       (error) => console.log(error)
     );
 
 
   }
+  showHideButton(): void{
+    this.role = this.authenticationService.getRole();
+    console.log('le role est ', this.role);
+    if ( !this.role && this.role !== 'admin'){
+      this.hide = true;
+      console.log('je suis la est c est hide = ', this.hide);
+    }
+  }
 
   modifierSoutenance(itemSoutenanceID: number): void {
-    const link = ['admin/UpdateSoutenance', itemSoutenanceID];
+    const link = ['soutenance/UpdateSoutenance', itemSoutenanceID];
     this.router.navigate(link);
   }
 

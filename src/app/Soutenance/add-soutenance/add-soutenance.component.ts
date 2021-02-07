@@ -3,7 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
-import {User} from '../../manage-users/models/user.model';
+import {AdminService} from '../../admin/admin.service';
+import {User} from '../../admin/models/user.model';
+import {SubjectService} from '../../subject/subject.service';
+import {Sujet} from '../../subject/models/sujet';
+
 
 @Component({
   selector: 'app-add-soutenance',
@@ -12,35 +16,43 @@ import {User} from '../../manage-users/models/user.model';
 })
 export class AddSoutenanceComponent implements OnInit {
 
-  searchByInsNumberResult: User[] = [];
+ userResult: User;
+ subjectResult: Sujet;
   constructor(
     private soutenanceService: SoutenanceService,
     private tostr: ToastrService,
-    private router: Router
+    private router: Router,
+    private adminService: AdminService,
+    private subjectService: SubjectService
 ) { }
 
   ngOnInit(): void {
   }
 
- /* searchByInsNumber(inputInsNumber): void{
+ searchUserByInsNumber(inputInsNumber): void {
     let insNumber = inputInsNumber.value;
-    insNumber =  Number(insNumber.trim());
-    console.log(`le type de insNumber en param est `, typeof insNumber);
-    if ( insNumber ){
-      this.soutenanceService.serchUserByInsNumber(insNumber).subscribe(
-        (users) => {
-          console.log(users);
-          this.searchByInsNumberResult = users;
-         // console.log(this.searchByInsNumberResult);
-        }
-      );
-    }
-    else {
-      this.searchByInsNumberResult = [];
-    }
-
-
-  }*/
+    insNumber = Number(insNumber.trim());
+    this.adminService.getUserByInsNumber(insNumber).subscribe(
+      (user) => {
+        console.log(user);
+        this.userResult = user;
+        this.findSujetByStudent(user.id);
+      }, (error) => {
+        console.log('Etudiant inexistant');
+        this.tostr.error('Etudiant inexistant');
+      }
+    );
+  }
+  findSujetByStudent(studentID): void{
+    this.subjectService.getSubjectsByStudentId(studentID).subscribe(
+      (response) => {
+        this.subjectResult = response;
+      },
+      (error) => this.tostr.error(
+        'pas de sujet pour cet etudiant'
+      )
+    );
+  }
   AjouterSoutenance(formulaire: NgForm): void {
     console.log(formulaire.value);
     this.soutenanceService.addSoutenance(formulaire.value).subscribe(
@@ -49,7 +61,7 @@ export class AddSoutenanceComponent implements OnInit {
         this.tostr.success(
           `La soutenance a été ajouté avec succès`
         );
-        this.router.navigate(['admin/ListSoutenance']);
+        this.router.navigate(['soutenance/ListSoutenance']);
       },
       (error) => {
         console.log(error);

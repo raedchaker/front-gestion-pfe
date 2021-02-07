@@ -7,13 +7,13 @@ import { DetailSoutenanceComponent } from './detail-soutenance/detail-soutenance
 import {FormsModule} from '@angular/forms';
 
 
-@NgModule({declarations: [AddSoutenanceComponent, ListSoutenanceComponent, DetailSoutenanceComponent],
-  imports: [
+@NgModule({declarations: [],
+  imports: [ FormsModule,
     CommonModule, RouterModule.forChild([
-      {path: 'admin/AddSoutenance', component: AddSoutenanceComponent},
-      {path: 'admin/ListSoutenance', component: ListSoutenanceComponent},
-      {path: 'admin/UpdateSoutenance/:id', component: DetailSoutenanceComponent},
-    ]), FormsModule,
+      {path: 'AddSoutenance', component: AddSoutenanceComponent},
+      {path: 'ListSoutenance', component: ListSoutenanceComponent},
+      {path: 'UpdateSoutenance/:id', component: DetailSoutenanceComponent},
+    ]),
   ]
 })
 export class ManageSoutenanceModule { }

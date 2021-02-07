@@ -26,8 +26,8 @@ export class SubjectService {
     return this.http.get<Sujet[]>(SUBJECT_URL);
   }
 
-  getSubjectsByTeacherId(teacherId: string): Observable<Sujet[]> {
-    return this.http.get<Sujet[]>(SUBJECT_URL + '/teacher/' + teacherId);
+  getSubjectsByStudentId(studentId): Observable<Sujet> {
+    return this.http.get<Sujet>(SUBJECT_URL + '/findByInsNumber/' + studentId);
   }
 
   getSubjectById(id: string): Observable<Sujet> {
