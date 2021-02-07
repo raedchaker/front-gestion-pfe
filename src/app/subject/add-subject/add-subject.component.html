@@ -1,0 +1,170 @@
+<div class="container-fluid mt--7">
+  <div class="row justify-content-center">
+    <div class="col-xl-10 col-md-9">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Ajouter Sujet</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div
+            style="
+              font-size: 15px;
+              color: #85210e;
+              text-align: center;
+              font-weight: bold;
+            "
+          >
+            {{ message }}
+          </div>
+          <form role="form" #add_subject="ngForm">
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-titre"
+                      >Titre*</label
+                    >
+                    <input
+                      required
+                      ngModel
+                      type="text"
+                      name="title"
+                      class="form-control form-control-alternative"
+                      placeholder="Titre"
+                      #titleInput="ngModel"
+                    />
+                    <span
+                      *ngIf="titleInput.invalid && titleInput.touched"
+                      style="
+                        font-size: 13px;
+                        color: #85210e;
+                        text-align: center;
+                      "
+                    >
+                      Champ obligatoire
+                    </span>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-entreprise"
+                      >Entreprise*</label
+                    >
+                    <input
+                      required
+                      ngModel
+                      type="text"
+                      name="enterprise"
+                      class="form-control form-control-alternative"
+                      placeholder="Entreprise"
+                      #enterpriseInput="ngModel"
+                    />
+                    <span
+                      *ngIf="enterpriseInput.invalid && enterpriseInput.touched"
+                      style="
+                        font-size: 13px;
+                        color: #85210e;
+                        text-align: center;
+                      "
+                    >
+                      Champ obligatoire
+                    </span>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-entreprise"
+                      >Email de l'encadrant*</label
+                    >
+                    <input
+                      required
+                      ngModel
+                      type="email"
+                      name="teacher"
+                      class="form-control form-control-alternative"
+                      placeholder="Enseignant"
+                      #teacherInput="ngModel"
+                    />
+                    <span
+                      *ngIf="teacherInput.invalid && teacherInput.touched"
+                      style="
+                        font-size: 13px;
+                        color: #85210e;
+                        text-align: center;
+                      "
+                    >
+                      Champ obligatoire
+                    </span>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-annee"
+                      >Année</label
+                    >
+                    <input
+                      required
+                      ngModel
+                      type="text"
+                      name="year"
+                      class="form-control form-control-alternative"
+                      placeholder="Année"
+                      #anneeInput="ngModel"
+                    />
+                    <span
+                      *ngIf="anneeInput.invalid && anneeInput.touched"
+                      style="
+                        font-size: 13px;
+                        color: #85210e;
+                        text-align: center;
+                      "
+                    >
+                      Champ obligatoire
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="row"></div>
+            </div>
+
+            <div class="pl-lg-4">
+              <div class="form-group">
+                <label class="form-control-label" for="description"
+                  >Description*</label
+                >
+                <textarea
+                  required
+                  ngModel
+                  rows="4"
+                  name="description"
+                  class="form-control form-control-alternative"
+                  placeholder="Description du sujet ..."
+                  #descriptionInput="ngModel"
+                ></textarea>
+                <span
+                  *ngIf="descriptionInput.invalid && descriptionInput.touched"
+                  style="font-size: 13px; color: #85210e; text-align: center"
+                >
+                  Champ obligatoire
+                </span>
+              </div>
+            </div>
+            <div class="text-center">
+              <button
+                type="button"
+                (click)="processForm(add_subject)"
+                class="btn btn-btn-insat my-4"
+              >
+                Ajouter
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

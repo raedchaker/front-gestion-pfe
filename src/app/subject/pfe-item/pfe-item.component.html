@@ -1,0 +1,16 @@
+
+<div style="padding-bottom: 10px ;">
+    <div class="card card-stats mb-4 mb-xl-0">
+      <div class="card-body"  routerLink="/subject/subject-details/{{pfe.id}}">
+        <div class="row">
+          <div class="col">
+            <h5 class="card-title text-uppercase text-muted mb-0">Sujet: <span class="h4 font-weight-bold mb-0" *ngIf="pfe.title">{{pfe.title}}</span></h5>
+            <h5 class="card-title text-uppercase text-muted mb-0">Année: <span class="h4 font-weight-bold mb-0"*ngIf="pfe.year">{{pfe.year}}</span></h5>
+            <h5 class="card-title text-uppercase text-muted mb-0">Etudiant: <span class="h4 font-weight-bold mb-0" *ngIf="pfe.student"> {{pfe.student.firstname+' '+pfe.student.lastname}} </span></h5>
+            <h5 class="card-title text-uppercase text-muted mb-0">Encadrant: <span class="h4 font-weight-bold mb-0" *ngIf="pfe.teacher"> {{pfe.teacher.firstname+' '+pfe.teacher.lastname}} </span></h5>
+            <h5 class="card-title text-uppercase text-muted mb-0">Entreprise: <span class="h4 font-weight-bold mb-0" *ngIf="pfe.entreprise"> {{pfe.entreprise}} </span></h5>            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

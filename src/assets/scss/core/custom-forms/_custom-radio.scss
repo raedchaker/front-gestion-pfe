@@ -1,0 +1,37 @@
+//
+// Custom radio
+//
+
+.custom-radio {
+    .custom-control-input ~ .custom-control-label {
+        cursor: pointer;
+        font-size: $font-size-sm;
+    }
+
+    .custom-control-input {
+        &:checked {
+            ~ .custom-control-label {
+                &::before {
+                    border-color: $blue-insat;
+                }
+                &::after {
+                    background-color: $blue-insat;
+                }
+            }
+        }
+
+        &:disabled {
+            ~ .custom-control-label {
+                &::before {
+                    border-color:$blue-insat;
+                }
+            }
+
+            &:checked {
+                &::before {
+                    border-color: $blue-insat;
+                }
+            }
+        }
+    }
+}
