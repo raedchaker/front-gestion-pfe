@@ -13,17 +13,17 @@
               <th scope="col">Membre de Jury</th>
               <th scope="col">Date</th>
               <th scope="col">Heur</th>
-              <th scope="col">Salle</th>
+
               <th scope="col"></th>
             </tr>
           </thead>
-          <tbody>
-            <tr *ngFor="let itemSoutenance of soutenances">
+          <tbody *ngFor="let itemSoutenance of soutenances">
+            <tr>
               <td scope="row">
 
 
                     <i class="fas fa-bookmark">  </i>
-                     {{itemSoutenance.subject}}
+                     {{itemSoutenance.nom_sujet}}
 
 
               </td>
@@ -33,13 +33,13 @@
               </td>
               <td>
                   <li >
-                    {{itemSoutenance.president_jury}}
+                    {{itemSoutenance.nom_presidentJury}}
                   </li>
                   <li>
-                    {{itemSoutenance.membre1_jury}}
+                    {{itemSoutenance.nom_examinateur}}
                   </li>
                   <li>
-                    {{itemSoutenance.membre2_jury}}
+                    {{itemSoutenance.responsableInsat}}
                   </li>
 
               </td>
@@ -54,13 +54,9 @@
                   {{itemSoutenance.heur}}
                 </div>
               </td>
-              <td>
-                <div class="d-flex align-items-center">
-                  {{itemSoutenance.salle}}
-                </div>
-              </td>
+
               <td >
-               <button class="btn fas fa-edit" (click)="modifierSoutenance(itemSoutenance)"></button>
+               <button class="btn fas fa-edit" (click)="modifierSoutenance(itemSoutenance.id)"></button>
                 <button class="btn fas fa-trash" (click)="supprimerSoutenance(itemSoutenance)"></button>
                </td>
             </tr>

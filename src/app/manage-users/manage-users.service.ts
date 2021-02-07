@@ -13,9 +13,9 @@ const API = "http://localhost:3000/user/";
 export class ManageUsersService {
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getUsers():Observable<User[]>{
+  getUsers(): Observable<User[]>{
   return    this.http.get<User[]>(API)
 
   }

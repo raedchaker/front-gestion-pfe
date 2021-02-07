@@ -1,8 +1,9 @@
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 import { SoutenanceService } from './../soutenance.service';
 import { Component, OnInit } from '@angular/core';
-import { Soutenance } from '../Model/soutenance';
+import { SoutenanceModel } from '../Model/soutenance.model';
+import {AuthenticationService} from '../../authentication/authentication.service';
 
 @Component({
   selector: 'app-list-soutenance',
@@ -11,22 +12,43 @@ import { Soutenance } from '../Model/soutenance';
 })
 export class ListSoutenanceComponent implements OnInit {
 
-  soutenances: Soutenance[] =[]
-
+  soutenances: SoutenanceModel[] = [];
+  role = '';
   constructor(
-    private soutenanceService:SoutenanceService,
-    private router:Router,
-
-    ) { }
+    private soutenanceService: SoutenanceService,
+    private router: Router,
+    private toasterService: ToastrService
+  ) {
+  }
 
   ngOnInit(): void {
-    this.soutenances = this.soutenanceService.soutenances
-    this.soutenances.push(new Soutenance(1,"sujet1","Missaoui","Syrine","Riadh Robbana","Aymen Sellaouti","sana Sassi",new Date(2021,1,31),null,"salle1"));
+    this.soutenanceService.getSoutenances().subscribe(
+      (response) => {
+        console.log(response);
+        this.soutenances = response;
+      },
+      (error) => console.log(error)
+    );
+
+
   }
-  modifierSoutenance(itemSoutenance: Soutenance){
-      this.router.navigate(['admin/AddSoutenance'])
+
+  modifierSoutenance(itemSoutenanceID: number): void {
+    const link = ['admin/UpdateSoutenance', itemSoutenanceID];
+    this.router.navigate(link);
   }
-  supprimerSoutenance(itemSoutenance: Soutenance){
-console.log("soutenance deteleted")
+
+  supprimerSoutenance(itemSoutenance: SoutenanceModel): void {
+    const id = itemSoutenance.id;
+    this.soutenanceService.deleteSoutenance(id).subscribe(
+      () => {
+        this.toasterService.success('Soutenance deleted successfuly', 'success');
+        this.soutenanceService.getSoutenances().subscribe(
+          (response) => {
+            this.soutenances = response;
+          }
+        );
+        console.log('soutenance deteleted');
+      });
   }
 }

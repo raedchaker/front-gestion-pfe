@@ -5,6 +5,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGardGuard } from './authentication/auth-gard.guard';
 import { AddSoutenanceComponent } from './Soutenance/add-soutenance/add-soutenance.component';
+import {DetailSoutenanceComponent} from './Soutenance/detail-soutenance/detail-soutenance.component';
 
 const routes: Routes = [
   {
@@ -18,13 +19,16 @@ const routes: Routes = [
   },
   {
     path: 'admin/ListSoutenance',
-    component: ListSoutenanceComponent,
-    canActivate: [AuthGardGuard],
+    component: ListSoutenanceComponent
+  },  {
+    path: 'admin/UpdateSoutenance/:id',
+    component: DetailSoutenanceComponent,
   },
   {
     path : 'login',
     component : LoginComponent,
   }
+
 ];
 
 @NgModule({
