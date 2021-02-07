@@ -12,10 +12,10 @@
         &:checked {
             ~ .custom-control-label {
                 &::before {
-                    border-color: $custom-control-indicator-checked-border-color;
+                    border-color: $blue-insat;
                 }
                 &::after {
-                    background-image: $custom-radio-indicator-icon-checked;
+                    background-color: $blue-insat;
                 }
             }
         }
@@ -23,13 +23,13 @@
         &:disabled {
             ~ .custom-control-label {
                 &::before {
-                    border-color: $custom-control-indicator-disabled-bg;
+                    border-color:$blue-insat;
                 }
             }
 
             &:checked {
                 &::before {
-                    border-color: $custom-control-indicator-checked-disabled-bg;
+                    border-color: $blue-insat;
                 }
             }
         }

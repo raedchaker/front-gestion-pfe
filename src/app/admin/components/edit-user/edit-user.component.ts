@@ -27,7 +27,7 @@ export class EditUserComponent implements OnInit {
       this.id = params.id;
       this.userService.getUser(params.id).subscribe(
         (res) => {
-          //console.log(res)
+          console.log(res)
           this.user = res;
         },
         (err) => console.log(err)
@@ -40,6 +40,8 @@ export class EditUserComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     console.log(form);
+    console.log(this.id)
+    form.value['cin']=Number(form.value['cin'])
     this.userService.editUser(this.id, form.value).subscribe(
       (res) => {
         console.log(res);

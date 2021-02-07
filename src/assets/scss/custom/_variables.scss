@@ -79,6 +79,7 @@ $green:   #2dce89 !default;
 $teal:    #11cdef !default;
 $cyan:    #2bffc6 !default;
 $red-insat: #85210e !default;
+$blue-insat:#273A48 !default;
 
 $colors: () !default;
 $colors: map-merge((
@@ -97,9 +98,11 @@ $colors: map-merge((
   "light":      $gray-400,
   "lighter":    $gray-200,
   "gray-dark":  $gray-800,
-  "red-insat": $red-insat
+  "red-insat": $red-insat,
+  "blue-insat":$blue-insat
 ), $colors);
 
+$btn-insat :#273A48 !default;
 $default:       #172b4d !default;
 $primary:       #5e72e4 !default;
 $secondary:     #f7fafc !default;
@@ -133,7 +136,8 @@ $theme-colors: map-merge((
   "white":        $white,
   "neutral":      $white,
   "dark":         $dark,
-  "darker":       $darker
+  "darker":       $darker,
+  "btn-insat":    $btn-insat
 ), $theme-colors);
 
 $brand-colors: () !default;
@@ -618,7 +622,7 @@ $custom-control-indicator-active-box-shadow:    $custom-control-indicator-box-sh
 
 $custom-control-indicator-checked-color:        $component-active-color !default;
 $custom-control-indicator-checked-bg:           $component-active-bg !default;
-$custom-control-indicator-checked-border-color: $component-active-border-color !default;
+$custom-control-indicator-checked-border-color: $blue-insat !default;
 $custom-control-indicator-checked-box-shadow:   $custom-control-indicator-box-shadow !default;
 $custom-control-indicator-checked-disabled-bg:  rgba(theme-color("primary"), .5) !default;
 
