@@ -1,0 +1,342 @@
+<div class="container-fluid mt--7">
+  <div class="">
+    <div class="card bg-secondary shadow mb-4">
+      <div class="card-header bg-white">
+        <form #addform="ngForm">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="custom-control custom-radio mb-3">
+                <input
+                  name="add"
+                  class="custom-control-input"
+                  id="one"
+                  type="radio"
+                  ngModel
+                  required
+                  [checked]="true"
+                  #add="ngModel"
+                  value="one"
+                />
+                <label class="custom-control-label" for="one"
+                  ><h4>Add One User</h4></label
+                >
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="custom-control custom-radio mb-3">
+                <input
+                  name="add"
+                  class="custom-control-input"
+                  id="multiple"
+                  type="radio"
+                  ngModel
+                  required
+                  #add="ngModel"
+                  value="multiple"
+                />
+                <label class="custom-control-label" for="multiple"
+                  ><h4>Add Multiple Users</h4></label
+                >
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card bg-secondary shadow" [hidden]="add.value !== 'multiple'">
+      <div class="card-header bg-white border-0">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="mb-0">Add multiple Users (Excel File)</h3>
+          </div>
+          <div class="col-4 text-right">
+            <button href="#!" class="btn btn-sm btn-primary" (click)="exit()">
+              Exit
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <form #addUsersFile="ngForm">
+          <div class="form-group col-lg-4">
+            <label class="form-control-label" for="file">Excel File</label>
+            &nbsp;<i
+              class="ni ni-fat-remove text-red"
+              [hidden]="excelFile.valid || excelFile.untouched"
+            ></i>
+            <i
+              class="ni ni-check-bold text-info"
+              [hidden]="!excelFile.valid"
+            ></i>
+
+            <input
+              type="file"
+              name="file"
+              class="form-control form-control-alternative"
+              ngModel
+              #excelFile="ngModel"
+              placeholder="Excel File"
+              accept=".excel"
+              required
+            />
+          </div>
+          <div class="col-lg-6 container-fluid mt-4">
+            <button
+              type="button"
+              class="btn btn-primary btn-lg btn-block"
+              [disabled]="addUsersFile.invalid"
+              (click)="addFile()"
+            >
+              Add User
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card bg-secondary shadow mt-2" [hidden]="add.value !== 'one'">
+      <div class="card-header bg-white border-0">
+        <div class="row align-items-center">
+          <div class="col-8">
+            <h3 class="mb-0">Add User</h3>
+          </div>
+          <div class="col-4 text-right">
+            <button href="#!" class="btn btn-sm btn-primary" (click)="exit()">
+              Exit
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <form #addUser="ngForm">
+          <h6 class="heading-small text-muted mb-4">User information</h6>
+          <div class="pl-lg-4">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="firstname"
+                    >Firstname</label
+                  >
+                  &nbsp;<i
+                    class="ni ni-fat-remove text-red"
+                    [hidden]="firstname.valid || firstname.untouched"
+                  ></i>
+                  <i
+                    class="ni ni-check-bold text-info"
+                    [hidden]="!firstname.valid"
+                  ></i>
+
+                  <input
+                    type="text"
+                    name="firstname"
+                    class="form-control form-control-alternative"
+                    ngModel
+                    #firstname="ngModel"
+                    placeholder="Firstname"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="lastname"
+                    >Lastname</label
+                  >
+                  &nbsp;<i
+                    class="ni ni-fat-remove text-red"
+                    [hidden]="lastname.valid || lastname.untouched"
+                  ></i>
+                  <i
+                    class="ni ni-check-bold text-info"
+                    [hidden]="!lastname.valid"
+                  ></i>
+
+                  <input
+                    type="text"
+                    name="lastname"
+                    class="form-control form-control-alternative"
+                    placeholder="Lastname"
+                    ngModel
+                    required
+                    #lastname="ngModel"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label" for="email"
+                    >Email Address</label
+                  >
+                  &nbsp;<i
+                    class="ni ni-fat-remove text-red"
+                    [hidden]="email.valid || email.untouched"
+                  ></i>
+                  <i
+                    class="ni ni-check-bold text-info"
+                    [hidden]="!email.valid"
+                  ></i>
+
+                  <input
+                    type="email"
+                    name="email"
+                    email
+                    class="form-control form-control-alternative"
+                    placeholder="Email Address"
+                    required
+                    ngModel
+                    #email="ngModel"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label" for="cin">CIN</label>
+                  &nbsp;<i
+                    class="ni ni-fat-remove text-red"
+                    [hidden]="cin.valid || cin.untouched"
+                  ></i>
+                  <i
+                    class="ni ni-check-bold text-info"
+                    [hidden]="!cin.valid"
+                  ></i>
+                  <input
+                    type="number"
+                    name="cin"
+                    class="form-control form-control-alternative"
+                    ngModel
+                    placeholder="CIN"
+                    #cin="ngModel"
+                    required
+                    minlength="7"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label" for="phone"
+                    >Phone Number</label
+                  >
+                  &nbsp;<i
+                    class="ni ni-fat-remove text-red"
+                    [hidden]="phone.valid || phone.untouched"
+                  ></i>
+                  <i
+                    class="ni ni-check-bold text-info"
+                    [hidden]="!phone.valid"
+                  ></i>
+                  <input
+                    type="tel"
+                    name="phone"
+                    class="form-control form-control-alternative"
+                    placeholder="Phone Number"
+                    ngModel
+                    #phone="ngModel"
+                    required
+                    minlength="8"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4" />
+
+          <h6 class="heading-small text-muted mb-4">More informations</h6>
+
+          <div class="pl-lg-4">
+            <div class="form-group">
+              <label class="form-control-label" for="lastname">User Role</label>
+              &nbsp;<i
+                class="ni ni-fat-remove text-red"
+                [hidden]="role.valid || role.untouched"
+              ></i>
+              <i class="ni ni-check-bold text-info" [hidden]="!role.valid"></i>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="custom-control custom-radio mb-3">
+                    <input
+                      name="role"
+                      class="custom-control-input"
+                      id="student"
+                      ngModel
+                      type="radio"
+                      checked
+                      required
+                      value="student"
+                      #role="ngModel"
+                    />
+                    <label class="custom-control-label" for="student"
+                      >Student</label
+                    >
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="custom-control custom-radio mb-3">
+                    <input
+                      name="role"
+                      class="custom-control-input"
+                      id="teacher"
+                      type="radio"
+                      ngModel
+                      #role="ngModel"
+                      required
+                      value="teacher"
+                    />
+                    <label class="custom-control-label" for="teacher"
+                      >Teacher</label
+                    >
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="custom-control custom-radio mb-3">
+                    <input
+                      name="role"
+                      class="custom-control-input"
+                      id="admin"
+                      type="radio"
+                      ngModel
+                      required
+                      #role="ngModel"
+                      value="admin"
+                    />
+                    <label class="custom-control-label" for="admin"
+                      >Admin</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" [hidden]="renderInsNumber(addUser)">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="form-control-label" for="insNumber"
+                  >Inscription Number</label
+                >
+                <input
+                  type="number"
+                  name="insNumber"
+                  class="form-control form-control-alternative"
+                  ngModel
+                  placeholder="Inscription Number"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 container-fluid mt-4">
+            <button
+              type="button"
+              class="btn btn-primary btn-lg btn-block"
+              [disabled]="addUser.invalid"
+              (click)="onSubmit(addUser)"
+            >
+              Add User
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
