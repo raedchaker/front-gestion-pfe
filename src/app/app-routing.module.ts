@@ -3,7 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './pages/admin/admin.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGardGuard } from './authentication/guards/auth-gard.guard';
-import { Error6Component } from './pages/error/error6.component';
+import { ErrorComponent } from "./pages/error/error.component";
+
+
 import { AdminGuardGuard } from './authentication/guards/admin-guard.guard';
 
 const routes: Routes = [
@@ -12,7 +14,7 @@ const routes: Routes = [
     component: AdminComponent,
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
-    canActivate: [AuthGardGuard,AdminGuardGuard],
+    canActivate: [AuthGardGuard, AdminGuardGuard],
   },
   {
     path: 'login',
@@ -25,9 +27,10 @@ const routes: Routes = [
       import('./subject/subject.module').then((m) => m.SubjectModule),
   },
   {
-    path: 'error',
-    component: Error6Component,
-  },
+    path:'**',
+    component:ErrorComponent
+  }
+
 ];
 
 @NgModule({

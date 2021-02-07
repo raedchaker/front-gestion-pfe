@@ -15,6 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ErrorComponent } from './pages/error/error.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminComponent,
     FooterComponent,
     SubHeaderComponent,
+    ErrorComponent,
     LoginComponent,
+    ErrorComponent,
   ],
   imports: [
     HttpClientModule,
