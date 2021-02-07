@@ -20,4 +20,15 @@ export class AdminService {
   addUser(user): Observable<any> {
     return this.http.post('http://localhost:3000/auth/register', user);
   }
+  changePassword(change):Observable<any> {
+    return this.http.post('http://localhost:3000/auth/change-password',change)
+   
+  }
+  getUser(id:string):Observable<User> {
+    return this.http.get<User>(API+id)
+
+  }
+  editUser(id:string,user:Partial<User>):Observable<User>{
+    return this.http.put<User>(API+id,user)
+  }
 }
