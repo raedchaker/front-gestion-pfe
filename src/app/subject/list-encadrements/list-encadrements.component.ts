@@ -9,11 +9,14 @@ import { SubjectService } from '../subject.service';
 })
 export class ListEncadrementsComponent implements OnInit {
   listEncadrements: Sujet[] = [];
+  teacherId: string = '';
   constructor(private subjectService: SubjectService) {}
 
   ngOnInit(): void {
-    this.subjectService.getAllPfeSubjects().subscribe((res) => {
-      this.listEncadrements = res.slice();
-    });
+      this.teacherId = localStorage.getItem('id');
+      this.subjectService.getThisYearSubjectsByTeacherId(this.teacherId).subscribe(res=>{
+        this.listEncadrements = res.slice();
+        this.listEncadrements = this.listEncadrements.filter(s=> s.status == 'Validé')
+      })
   }
 }

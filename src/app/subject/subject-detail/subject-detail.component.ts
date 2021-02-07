@@ -2,6 +2,8 @@ import { Sujet } from '../models/sujet';
 import { SubjectService } from '../subject.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-subject-detail',
@@ -11,9 +13,11 @@ import { ActivatedRoute } from '@angular/router';
 export class SubjectDetailComponent implements OnInit {
   subjectId: string = '';
   mySubject: Sujet = new Sujet();
+  url = environment.url+'uploads/'
   constructor(
     private route: ActivatedRoute,
-    private subjectService: SubjectService
+    private subjectService: SubjectService,
+    public sanitizer: DomSanitizer,
   ) {}
   pdfSrc = 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf';
 
@@ -24,6 +28,9 @@ export class SubjectDetailComponent implements OnInit {
         .getSubjectById(this.subjectId)
         .subscribe((subject) => {
           this.mySubject = subject;
+          if(this.mySubject.rapport){
+            this.pdfSrc = this.url + this.mySubject.rapport;
+          }
         });
     });
   }

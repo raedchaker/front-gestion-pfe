@@ -1,3 +1,4 @@
+import { SubjectRoutingModule } from './subject-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddSubjectComponent } from './add-subject/add-subject.component';
@@ -12,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ListePfeEnseignantComponent } from './liste-pfe-enseignant/liste-pfe-enseignant.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PfeItemComponent,
     SubjectDetailComponent,
     TablePfeComponent,
+    ListePfeEnseignantComponent,
   ],
   imports: [
     CommonModule,
@@ -30,17 +33,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PdfViewerModule,
     MatSelectModule,
     NgxPaginationModule,
-    RouterModule.forChild([
-      { path: 'add-subject', component: AddSubjectComponent },
-      { path: 'list-pfe', component: ListPfeComponent },
-      { path: 'mes-encadrements', component: ListEncadrementsComponent },
-      { path: 'subject-details/:id', component: SubjectDetailComponent },
-      {
-        path: '',
-        redirectTo: 'list-pfe',
-        pathMatch: 'full',
-      },
-    ]),
+    SubjectRoutingModule
   ],
 })
 export class SubjectModule {}

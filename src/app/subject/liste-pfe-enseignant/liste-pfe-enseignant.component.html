@@ -1,0 +1,26 @@
+<!-- Page content -->
+<div class="container-fluid bg-gradient-info mt--7">
+    <!-- Table -->
+    <div class="row">
+        <div class="col">
+            <div class="card shadow" *ngIf="listSubjects.length > 0 else aucun_ancien_sujet">
+                <div class="card-header border-0">
+                    <h1 style="text-align: center;">Ancien encadrements</h1>
+                </div>
+                <div *ngFor="let y of yearList">
+
+                    <div class="card-header border-0">
+                        <h1> {{y}} </h1>
+                    </div>
+                    <app-table-pfe [listSubjects]='filter(y)'></app-table-pfe>
+                </div>
+            </div>
+            <ng-template class="card shadow" style="text-align: center;" #aucun_ancien_sujet>
+                <h1>vous n'avez pas d'ancien sujet de pfe pour afficher</h1>
+                <p> vous pouvez voir la liste des anciens sujet pfe par ici <a
+                        routerLink="/subject/list-pfe" class="btn btn-secondary btn-lg active"
+                        role="button" aria-pressed="true">sujet pfe</a> </p>
+            </ng-template>
+        </div>
+    </div>
+</div>

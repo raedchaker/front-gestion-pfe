@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Sujet } from './models/sujet';
 
-const SUBJECT_URL = 'http://localhost:3000/subject';
+const SUBJECT_URL = environment.url+'subject/';
 
 @Injectable({
   providedIn: 'root',
@@ -26,8 +27,16 @@ export class SubjectService {
     return this.http.get<Sujet[]>(SUBJECT_URL);
   }
 
+  getThisYearPfeSubjects(): Observable<Sujet[]> {
+    return this.http.get<Sujet[]>(SUBJECT_URL+'currentYear');
+  }
+
   getSubjectsByTeacherId(teacherId: string): Observable<Sujet[]> {
-    return this.http.get<Sujet[]>(SUBJECT_URL + '/teacher/' + teacherId);
+    return this.http.get<Sujet[]>(SUBJECT_URL + 'teacher/' + teacherId);
+  }
+
+  getThisYearSubjectsByTeacherId(teacherId: string): Observable<Sujet[]> {
+    return this.http.get<Sujet[]>(SUBJECT_URL + 'currentYear/teacher/' + teacherId);
   }
 
   getSubjectById(id: string): Observable<Sujet> {

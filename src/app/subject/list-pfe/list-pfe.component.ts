@@ -1,4 +1,3 @@
-import { Annee } from '../models/annee';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Sujet } from '../models/sujet';
@@ -11,24 +10,30 @@ import { SubjectService } from '../subject.service';
 })
 export class ListPfeComponent implements OnInit {
   listSubjects: Sujet[] = [];
-  anneeList: Annee[] = [];
-  year = new FormControl();
+  filteredSubjects: Sujet[] = [];
+  year = new FormControl('');
   p: number = 0; // page to point on
-  yearList: string[] = [
-    'Extra cheese',
-    'Mushroom',
-    'Onion',
-    'Pepperoni',
-    'Sausage',
-    'Tomato',
-  ];
+  yearList: string[] = [];
 
   constructor(private subjectService: SubjectService) {}
 
   ngOnInit(): void {
     this.subjectService.getAllPfeSubjects().subscribe((res) => {
       this.listSubjects = res.slice();
-      console.log(res);
+      this.listSubjects = this.listSubjects.sort((s1,s2)=> -s1.year.localeCompare(s2.year));
+      this.listSubjects = this.listSubjects.filter(s=> s.status == 'Validé');
+      this.listSubjects.forEach(s=> this.yearList.push(s.year));
+      this.filteredSubjects = this.listSubjects.slice();
+      this.yearList= [...new Set(this.yearList)];
     });
+  }
+  filter(){
+    const filters: string[] = this.year.value;
+    this.filteredSubjects = this.listSubjects.filter(s=> filters.some(y=> y === s.year))
+  }
+
+  resetFilters(){
+    this.year.setValue('');
+    this.filteredSubjects = this.listSubjects.slice();
   }
 }

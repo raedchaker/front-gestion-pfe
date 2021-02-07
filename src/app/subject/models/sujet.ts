@@ -1,7 +1,7 @@
 import { User } from '../../admin/models/user.model';
 export class Sujet {
   id: string;
-  annee: number = 2021;
+  year: string;
   student: User;
   teacher: User;
   rapport: string;
