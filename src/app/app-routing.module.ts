@@ -10,7 +10,7 @@ const routes: Routes = [
     path:'admin',
     component:AdminComponent,
     loadChildren: () => import('./manage-users/manage-users.module').then((m) => m.ManageUsersModule),
-    canActivate:  [AuthGardGuard, AdminGuardGuard],
+   // canActivate:  [AuthGardGuard, AdminGuardGuard],
   },
   { 
     path : 'login',

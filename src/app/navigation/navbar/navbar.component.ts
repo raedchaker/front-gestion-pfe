@@ -14,7 +14,13 @@ export class NavbarComponent implements OnInit {
 
   }
 
+  logged:any
+  user:string
+
   ngOnInit() {
+    this.logged=this.auth.getAuthenticatedUser()
+    this.user=this.getAuthenticatedUser()
+    console.log(this.user)
     
   }
 
@@ -22,6 +28,10 @@ export class NavbarComponent implements OnInit {
     
     this.auth.logout()
     this.router.navigate(['login'])
+  }
+
+  getAuthenticatedUser(){
+    return `${this.logged.firstname} ${this.logged.lastname}`
   }
 
 }
