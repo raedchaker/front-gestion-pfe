@@ -27,7 +27,7 @@ export class AdminService {
    
   }
   getUser(id:string):Observable<User> {
-    return this.http.get<User>(API+id)
+    return this.http.get<User>(API+'get/'+id)
 
   }
   editUser(id:string,user:Partial<User>):Observable<User>{
