@@ -9,7 +9,6 @@ import { SubjectDetailComponent } from './subject-detail/subject-detail.componen
 import { TablePfeComponent } from './table-pfe/table-pfe.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -33,7 +32,7 @@ import { ListePfeEnseignantComponent } from './liste-pfe-enseignant/liste-pfe-en
     PdfViewerModule,
     MatSelectModule,
     NgxPaginationModule,
-    SubjectRoutingModule
+    SubjectRoutingModule,
   ],
 })
 export class SubjectModule {}

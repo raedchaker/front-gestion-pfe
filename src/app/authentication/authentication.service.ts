@@ -13,8 +13,9 @@ const jwtHelper = new JwtHelperService();
   providedIn: 'root',
 })
 export class AuthenticationService {
-  constructor(private http: HttpClient) // private jwtHelper: JwtHelperService
-  {}
+  constructor(
+    private http: HttpClient // private jwtHelper: JwtHelperService
+  ) {}
 
   login(credentials): Observable<any> {
     return this.http.post<any>(AUTH_API + '/login', credentials);
@@ -27,7 +28,6 @@ export class AuthenticationService {
   isAuthenticated(): boolean {
     let token = localStorage.getItem('token');
     if (!!token) {
-      console.log(jwtHelper.decodeToken(localStorage.getItem('token')));
       return !jwtHelper.isTokenExpired(token);
     }
 
@@ -40,7 +40,6 @@ export class AuthenticationService {
       const user = {
         ...jwtHelper.decodeToken(localStorage.getItem('token')),
       };
-     // console.log(y);
       return user.role;
     }
 
@@ -50,7 +49,6 @@ export class AuthenticationService {
     const user = {
       ...jwtHelper.decodeToken(localStorage.getItem('token')),
     };
-    console.log(user)
-    return user
+    return user;
   }
 }

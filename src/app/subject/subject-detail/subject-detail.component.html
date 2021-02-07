@@ -5,23 +5,27 @@
         <div class="card-body pt-0 pt-md-4">
           <div class="text-left">
             <h3 *ngIf="mySubject.student">
-              Etudiant: {{mySubject.student.firstname +' '+ mySubject.student.lastname}}
+              Etudiant:
+              {{
+                mySubject.student.firstname + " " + mySubject.student.lastname
+              }}
             </h3>
             <h3 *ngIf="mySubject.teacher">
-              Encadrant: {{mySubject.teacher.firstname +' '+ mySubject.teacher.lastname}}
+              Encadrant:
+              {{
+                mySubject.teacher.firstname + " " + mySubject.teacher.lastname
+              }}
             </h3>
             <h3 *ngIf="mySubject.entreprise">
-              Entreprise: {{mySubject.entreprise}}
+              Entreprise: {{ mySubject.entreprise }}
             </h3>
-            <h3 *ngIf="mySubject.year">
-              Annee: {{mySubject.year}}
-            </h3>
+            <h3 *ngIf="mySubject.year">Annee: {{ mySubject.year }}</h3>
+            <h3>Entreprise: {{ mySubject.entreprise }}</h3>
+            <h3>Annee: {{ mySubject.year }}</h3>
             <hr class="my-4" />
-            <h3>
-              Descirption:
-            </h3>
+            <h3>Descirption:</h3>
             <p *ngIf="mySubject.description">
-              {{mySubject.description}}
+              {{ mySubject.description }}
             </p>
           </div>
         </div>
@@ -32,15 +36,37 @@
         <div class="card-header bg-white border-0">
           <div class="row align-items-center">
             <div>
-              <div >
-                <h3 class="mb-0" *ngIf="mySubject.title">{{mySubject.title}}</h3>
+              <div>
+                <h3 class="mb-0" *ngIf="mySubject.title">
+                  {{ mySubject.title }}
+                </h3>
               </div>
+            </div>
+            <div
+              class="col text-right"
+              [hidden]="!is_admin || is_valid_subject"
+            >
+              <button class="btn btn-primary" (click)="validate()">
+                Valider Sujet
+              </button>
+            </div>
+            <div
+              class="col text-right"
+              [hidden]="!is_my_subject || rapport_is_uploaded"
+            >
+              <button class="btn btn-primary" (click)="upload()">
+                Upload Rapport
+              </button>
             </div>
           </div>
         </div>
         <div class="card-body">
           <p>Rapport du sujet:</p>
-          <pdf-viewer [src]="sanitizer.bypassSecurityTrustResourceUrl(pdfSrc)" [render-text]="true" [original-size]="false"></pdf-viewer>
+          <pdf-viewer
+            [src]="sanitizer.bypassSecurityTrustResourceUrl(pdfSrc)"
+            [render-text]="true"
+            [original-size]="false"
+          ></pdf-viewer>
         </div>
       </div>
     </div>

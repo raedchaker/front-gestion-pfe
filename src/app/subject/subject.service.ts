@@ -13,14 +13,11 @@ export class SubjectService {
   constructor(private http: HttpClient) {}
 
   addSubject(subject): Observable<any> {
-    //should be done in the interceptor
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImluZXNzQGdtYWlsLmNvbSIsImlhdCI6MTYxMjUzMzEyNywiZXhwIjoxNjEyNTMzNzI3fQ.ZEGPMWAOStM6I93ODliJsbOyKoIGlyMASTQn2vSa-uc',
-      }),
-    };
-    return this.http.post<any>(SUBJECT_URL, subject, httpOptions);
+    return this.http.post<any>(SUBJECT_URL, subject);
+  }
+
+  validateSubject(id: string): Observable<any> {
+    return this.http.patch<any>(SUBJECT_URL + '/validate/' + id, null);
   }
 
   getAllPfeSubjects(): Observable<Sujet[]> {
@@ -40,6 +37,6 @@ export class SubjectService {
   }
 
   getSubjectById(id: string): Observable<Sujet> {
-    return this.http.get<Sujet>(SUBJECT_URL + id);
+    return this.http.get<Sujet>(SUBJECT_URL + '/' + id);
   }
 }
