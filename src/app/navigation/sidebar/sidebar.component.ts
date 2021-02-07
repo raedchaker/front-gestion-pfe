@@ -4,10 +4,10 @@ import { AuthenticationModule } from 'src/app/authentication/authentication.modu
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 
 declare interface RouteInfo {
-  path: string;
-  title: string;
-  icon: string;
-  class: string;
+    path: string;
+    title: string;
+    icon: string;
+    class: string;
 }
 export const AdminROUTES: RouteInfo[] = [
   {
@@ -80,8 +80,8 @@ export const teacherROUTES: RouteInfo[] = [
     icon: 'ni-tv-2 text-primary',
     class: '',
   },
-  { path: '/icons', title: 'Icons', icon: 'ni-planet text-blue', class: '' },
-  { path: '/maps', title: 'Maps', icon: 'ni-pin-3 text-orange', class: '' },
+  { path: '/soutenance/AddSoutenance', title: 'Nouvelle Soutenance', icon: 'ni-planet text-blue', class: '' },
+  { path: '/soutenance/ListSoutenance', title: 'Liste des Soutenances', icon: 'ni-pin-3 text-orange', class: '' },
   {
     path: '/subject/list-pfe',
     title: 'Liste des sujets PFE',
@@ -110,6 +110,7 @@ export const teacherROUTES: RouteInfo[] = [
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
+
   public menuItems: any[];
   public isCollapsed = true;
   user: any;

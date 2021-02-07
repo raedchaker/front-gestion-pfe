@@ -7,6 +7,7 @@ import { AuthGardGuard } from './authentication/guards/auth-gard.guard';
 import { Error6Component } from './pages/error/error6.component';
 import { AdminGuardGuard } from './authentication/guards/admin-guard.guard';
 
+
 const routes: Routes = [
   {
     path: 'admin',
@@ -26,6 +27,12 @@ const routes: Routes = [
     canActivate:[AuthGardGuard],
     loadChildren: () =>
       import('./subject/subject.module').then((m) => m.SubjectModule),
+  },
+  {
+    path: 'soutenance',
+    component: AdminComponent,
+    loadChildren: () =>
+      import('./Soutenance/manage-soutenance.module').then((m) => m.ManageSoutenanceModule),
   },
   {
     path: 'error',

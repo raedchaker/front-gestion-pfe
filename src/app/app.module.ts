@@ -14,6 +14,10 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { AddSoutenanceComponent } from './Soutenance/add-soutenance/add-soutenance.component';
+import { ListSoutenanceComponent } from './Soutenance/list-soutenance/list-soutenance.component';
+import {DetailSoutenanceComponent} from './Soutenance/detail-soutenance/detail-soutenance.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthHttpInterceptor } from './authentication/interceptors/auth.interceptor';
 
@@ -26,10 +30,15 @@ import { AuthHttpInterceptor } from './authentication/interceptors/auth.intercep
     FooterComponent,
     SubHeaderComponent,
     LoginComponent,
-  ],
+    AddSoutenanceComponent,
+    ListSoutenanceComponent,
+    DetailSoutenanceComponent
+
+    ],
   imports: [
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AuthenticationModule,
     BrowserModule,
     BrowserModule,
@@ -38,9 +47,10 @@ import { AuthHttpInterceptor } from './authentication/interceptors/auth.intercep
     NgbModule,
     HttpClientModule,
     CommonModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot()
+
   ],
   providers: [AuthHttpInterceptor],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

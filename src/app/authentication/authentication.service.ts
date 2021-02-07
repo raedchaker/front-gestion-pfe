@@ -6,6 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import jwt_decode from 'jwt-decode';
 import { EmailValidator } from '@angular/forms';
 
+
 const AUTH_API = '/api/auth';
 
 const jwtHelper = new JwtHelperService();
@@ -20,6 +21,7 @@ export class AuthenticationService {
   login(credentials): Observable<any> {
     return this.http.post<any>(AUTH_API + '/login', credentials);
   }
+
 
   logout() {
     localStorage.removeItem('token');

@@ -13,7 +13,9 @@ export class AdminService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(API);
   }
-
+  getUserByInsNumber(insNumber: number): Observable<User> {
+    return this.http.get<User>(API + insNumber);
+  }
   deleteUser(id: string): Observable<any> {
     return this.http.delete(API + id);
   }
