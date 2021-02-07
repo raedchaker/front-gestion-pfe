@@ -18,7 +18,7 @@
                   value="one"
                 />
                 <label class="custom-control-label" for="one"
-                  ><h4>Add One User</h4></label
+                  ><h4>Ajouter un seul utilisateur</h4></label
                 >
               </div>
             </div>
@@ -35,7 +35,7 @@
                   value="multiple"
                 />
                 <label class="custom-control-label" for="multiple"
-                  ><h4>Add Multiple Users</h4></label
+                  ><h4>Ajouter plusieurs utilisateur (via un fichier excel)</h4></label
                 >
               </div>
             </div>
@@ -47,7 +47,7 @@
       <div class="card-header bg-white border-0">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="mb-0">Add multiple Users (Excel File)</h3>
+            <h3 class="mb-0">Ajouter plusieurs utilisateur (via un fichier excel)</h3>
           </div>
           <div class="col-4 text-right">
             <button href="#!" class="btn btn-sm btn-primary" (click)="exit()">
@@ -59,7 +59,7 @@
       <div class="card-body">
         <form #addUsersFile="ngForm">
           <div class="form-group col-lg-4">
-            <label class="form-control-label" for="file">Excel File</label>
+            <label class="form-control-label" for="file">Fichier excel</label>
             &nbsp;<i
               class="ni ni-fat-remove text-red"
               [hidden]="excelFile.valid || excelFile.untouched"
@@ -87,7 +87,7 @@
               [disabled]="addUsersFile.invalid"
               (click)="addFile()"
             >
-              Add User
+              Ajouter un utilisateur
             </button>
           </div>
         </form>
@@ -97,7 +97,7 @@
       <div class="card-header bg-white border-0">
         <div class="row align-items-center">
           <div class="col-8">
-            <h3 class="mb-0">Add User</h3>
+            <h3 class="mb-0">Ajouter un utilisateur</h3>
           </div>
           <div class="col-4 text-right">
             <button href="#!" class="btn btn-sm btn-primary" (click)="exit()">
@@ -108,13 +108,13 @@
       </div>
       <div class="card-body">
         <form #addUser="ngForm">
-          <h6 class="heading-small text-muted mb-4">User information</h6>
+          <h6 class="heading-small text-muted mb-4">Informations d'utilisateur</h6>
           <div class="pl-lg-4">
             <div class="row">
               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="form-control-label" for="firstname"
-                    >Firstname</label
+                    >Prénom</label
                   >
                   &nbsp;<i
                     class="ni ni-fat-remove text-red"
@@ -131,7 +131,7 @@
                     class="form-control form-control-alternative"
                     ngModel
                     #firstname="ngModel"
-                    placeholder="Firstname"
+                    placeholder="Prénom"
                     required
                   />
                 </div>
@@ -139,7 +139,7 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="form-control-label" for="lastname"
-                    >Lastname</label
+                    >Nom</label
                   >
                   &nbsp;<i
                     class="ni ni-fat-remove text-red"
@@ -154,7 +154,7 @@
                     type="text"
                     name="lastname"
                     class="form-control form-control-alternative"
-                    placeholder="Lastname"
+                    placeholder="Nom"
                     ngModel
                     required
                     #lastname="ngModel"
@@ -167,7 +167,7 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label" for="email"
-                    >Email Address</label
+                    >Adresse mail</label
                   >
                   &nbsp;<i
                     class="ni ni-fat-remove text-red"
@@ -183,7 +183,7 @@
                     name="email"
                     email
                     class="form-control form-control-alternative"
-                    placeholder="Email Address"
+                    placeholder="Adresse mail"
                     required
                     ngModel
                     #email="ngModel"
@@ -216,7 +216,7 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label" for="phone"
-                    >Phone Number</label
+                    >Numéro de téléphone</label
                   >
                   &nbsp;<i
                     class="ni ni-fat-remove text-red"
@@ -230,7 +230,7 @@
                     type="tel"
                     name="phone"
                     class="form-control form-control-alternative"
-                    placeholder="Phone Number"
+                    placeholder="Numéro de téléphone"
                     ngModel
                     #phone="ngModel"
                     required
@@ -242,11 +242,11 @@
           </div>
           <hr class="my-4" />
 
-          <h6 class="heading-small text-muted mb-4">More informations</h6>
+          <h6 class="heading-small text-muted mb-4">Plus d'informations</h6>
 
           <div class="pl-lg-4">
             <div class="form-group">
-              <label class="form-control-label" for="lastname">User Role</label>
+              <label class="form-control-label" for="lastname">Role</label>
               &nbsp;<i
                 class="ni ni-fat-remove text-red"
                 [hidden]="role.valid || role.untouched"
@@ -267,7 +267,7 @@
                       #role="ngModel"
                     />
                     <label class="custom-control-label" for="student"
-                      >Student</label
+                      >Étudiant</label
                     >
                   </div>
                 </div>
@@ -284,7 +284,7 @@
                       value="teacher"
                     />
                     <label class="custom-control-label" for="teacher"
-                      >Teacher</label
+                      >Enseingnat</label
                     >
                   </div>
                 </div>
@@ -313,14 +313,14 @@
             <div class="col-lg-4">
               <div class="form-group">
                 <label class="form-control-label" for="insNumber"
-                  >Inscription Number</label
+                  >Numero d'inscription</label
                 >
                 <input
                   type="number"
                   name="insNumber"
                   class="form-control form-control-alternative"
                   ngModel
-                  placeholder="Inscription Number"
+                  placeholder="Numéro d'inscription"
                 />
               </div>
             </div>
@@ -332,7 +332,7 @@
               [disabled]="addUser.invalid"
               (click)="onSubmit(addUser)"
             >
-              Add User
+            Ajouter un utilisateur
             </button>
           </div>
         </form>
