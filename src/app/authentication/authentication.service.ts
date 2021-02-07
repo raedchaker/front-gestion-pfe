@@ -6,22 +6,18 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import jwt_decode from 'jwt-decode';
 import { EmailValidator } from '@angular/forms';
 
-
-const AUTH_API = "/api/auth";
+const AUTH_API = '/api/auth';
 
 const jwtHelper = new JwtHelperService();
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
-
-  constructor(
-    private http: HttpClient,
-    // private jwtHelper: JwtHelperService
-  ) {}
+  constructor(private http: HttpClient) // private jwtHelper: JwtHelperService
+  {}
 
   login(credentials): Observable<any> {
-    return this.http.post<any>(AUTH_API+"/login", credentials);
+    return this.http.post<any>(AUTH_API + '/login', credentials);
   }
 
   logout() {
@@ -30,27 +26,31 @@ export class AuthenticationService {
 
   isAuthenticated(): boolean {
     let token = localStorage.getItem('token');
-    if(!!token){
-      console.log(jwtHelper.decodeToken(localStorage.getItem('token')))
+    if (!!token) {
+      console.log(jwtHelper.decodeToken(localStorage.getItem('token')));
       return !jwtHelper.isTokenExpired(token);
     }
-      
+
     return false;
   }
 
-  getRole(){
+  getRole() {
     let token = localStorage.getItem('token');
-    if(!!token){
-      const y= {
-        ... jwtHelper.decodeToken(localStorage.getItem('token'))
-       }
-       console.log(y.role)
-      return y.role
+    if (!!token) {
+      const user = {
+        ...jwtHelper.decodeToken(localStorage.getItem('token')),
+      };
+     // console.log(y);
+      return user.role;
     }
-      
-    return "false";
 
+    return 'false';
   }
-
-
+  getAuthenticatedUser() {
+    const user = {
+      ...jwtHelper.decodeToken(localStorage.getItem('token')),
+    };
+    console.log(user)
+    return user
+  }
 }

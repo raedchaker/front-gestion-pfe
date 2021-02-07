@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationModule } from 'src/app/authentication/authentication.module';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
 
 declare interface RouteInfo {
   path: string;
@@ -52,13 +54,26 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   public menuItems: any[];
   public isCollapsed = true;
+  user: any;
+  logged: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private auth: AuthenticationService) {}
 
   ngOnInit() {
+    this.logged = this.auth.getAuthenticatedUser();
+    this.user = this.getAuthenticatedUser();
+    console.log(this.user);
     this.menuItems = ROUTES.filter((menuItem) => menuItem);
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
     });
+  }
+  getAuthenticatedUser() {
+    return `${this.logged.firstname} ${this.logged.lastname}`;
+  }
+  logout(){
+    
+    this.auth.logout()
+    this.router.navigate(['login'])
   }
 }
