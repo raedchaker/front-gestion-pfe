@@ -63,7 +63,7 @@
         <div class="card-body">
           <p>Rapport du sujet:</p>
           <pdf-viewer
-            [src]="sanitizer.bypassSecurityTrustResourceUrl(pdfSrc)"
+            [src]="pdfSrc"
             [render-text]="true"
             [original-size]="false"
           ></pdf-viewer>

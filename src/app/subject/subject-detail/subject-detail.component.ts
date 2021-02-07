@@ -26,7 +26,7 @@ export class SubjectDetailComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private toastr: ToastrService,
     public sanitizer: DomSanitizer
-  ) {} //
+  ) {} 
   pdfSrc = 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf';
 
   ngOnInit(): void {
@@ -37,10 +37,10 @@ export class SubjectDetailComponent implements OnInit {
         .getSubjectById(this.subjectId)
         .subscribe((subject) => {
           this.mySubject = subject;
-          if (this.mySubject.rapport) {
-            this.pdfSrc = this.url + this.mySubject.rapport;
-            this.rapport_is_uploaded = true;
-          }
+          // if (this.mySubject.rapport) {
+          //   this.pdfSrc = this.url + this.mySubject.rapport;
+          //   this.rapport_is_uploaded = true;
+          // }
           if (authenticated_user.email == this.mySubject.student.email) {
             this.is_my_subject = true;
           }
