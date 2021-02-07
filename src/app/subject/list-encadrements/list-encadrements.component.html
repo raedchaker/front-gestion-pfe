@@ -1,22 +1,26 @@
-  <!-- Page content -->
-  <div class="container-fluid bg-gradient-info mt--7">
-    <!-- Table -->
-    <div class="row">
-      <div class="col">
-        <div class="card shadow" *ngIf="listEncadrements.length>0; else aucun_encadrement">
-          <div class="card-header border-0">
-            <h1 style="text-align: center;">Mes encadrements</h1>
-          </div>
-          
-          <!-- <div class="card-header border-0">
-            <h1>2020</h1>
-          </div> -->
-          <app-table-pfe [listSubjects]='listEncadrements'></app-table-pfe>
+<!-- Page content -->
+<div class="container-fluid bg-gradient-info mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div
+        class="card shadow"
+        *ngIf="listEncadrements.length > 0; else aucun_encadrement"
+      >
+        <div class="card-header border-0">
+          <h1 style="text-align: center">Mes encadrements</h1>
         </div>
-        <ng-template class="card shadow" #aucun_encadrement>
-          <h1 style="text-align: center;">vous n'avez aucun encadrement pour l'instant</h1>
-        </ng-template>
+
+        <!-- <div class="card-header border-0">
+          <h1>2020</h1>
+        </div> -->
+        <app-table-pfe [listSubjects]="listEncadrements"></app-table-pfe>
       </div>
+      <ng-template class="card shadow" #aucun_encadrement>
+        <h1 style="text-align: center">
+          vous n'avez aucun encadrement pour l'instant
+        </h1>
+      </ng-template>
     </div>
   </div>
-  
+</div>
